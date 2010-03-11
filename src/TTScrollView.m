@@ -1371,12 +1371,12 @@ static const NSTimeInterval kOvershoot = 2;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)deviceOrientationDidChange:(void*)object {
-//  UIInterfaceOrientation orientation = TTDeviceOrientation();
-//  if (_rotateEnabled && !_holding
-//      && (![_delegate respondsToSelector:@selector(scrollView:shouldAutorotateToInterfaceOrientation:)]
-//      || [_delegate scrollView:self shouldAutorotateToInterfaceOrientation:orientation])) {
-//    self.orientation = orientation;
-//  }
+  UIInterfaceOrientation orientation = TTDeviceOrientation();
+  if (_rotateEnabled && !_holding
+      && (![_delegate respondsToSelector:@selector(scrollView:shouldAutorotateToInterfaceOrientation:)]
+      || [_delegate scrollView:self shouldAutorotateToInterfaceOrientation:orientation])) {
+    self.orientation = orientation;
+  }
 }
 
 
