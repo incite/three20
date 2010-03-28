@@ -534,6 +534,7 @@ static const NSTimeInterval kOvershoot = 2;
  * @private
  */
 - (void)layoutPage {
+
   UIView* page = [self pageAtIndex:_centerPageIndex create:YES];
   if (nil != page) {
     CGAffineTransform rotation = TTRotateTransformForOrientation(_orientation);
@@ -589,6 +590,10 @@ static const NSTimeInterval kOvershoot = 2;
       page.frame = CGRectMake(offset.x + frame.origin.x, offset.y + frame.origin.y,
         frame.size.width, frame.size.height);
       page.hidden = pinched;
+        
+        page.alpha = (320 + offset.x) / 320.;
+        page.opaque = FALSE;
+        
     }
   }
 
@@ -610,6 +615,10 @@ static const NSTimeInterval kOvershoot = 2;
       page.frame = CGRectMake(offset.x + frame.origin.x, offset.y + frame.origin.y,
         frame.size.width, frame.size.height);
       page.hidden = pinched;
+        
+        page.alpha = (320 - offset.x) / 320.;
+        page.opaque = FALSE;
+
     }
   }
 }
@@ -1371,12 +1380,14 @@ static const NSTimeInterval kOvershoot = 2;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)deviceOrientationDidChange:(void*)object {
+/*
   UIInterfaceOrientation orientation = TTDeviceOrientation();
   if (_rotateEnabled && !_holding
       && (![_delegate respondsToSelector:@selector(scrollView:shouldAutorotateToInterfaceOrientation:)]
       || [_delegate scrollView:self shouldAutorotateToInterfaceOrientation:orientation])) {
     self.orientation = orientation;
   }
+*/
 }
 
 
