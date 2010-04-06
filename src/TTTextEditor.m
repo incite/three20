@@ -212,6 +212,7 @@ static const CGFloat kUITextViewVerticalPadding = 6;
 
 - (BOOL)textField:(UITextField*)textField shouldChangeCharactersInRange:(NSRange)range
         replacementString:(NSString*)string {
+        
   BOOL shouldChange = YES;
   if ([_delegate respondsToSelector:@selector(textEditor:shouldChangeTextInRange:replacementText:)]) {
     shouldChange = [_delegate textEditor:_textEditor shouldChangeTextInRange:range
@@ -288,6 +289,7 @@ static const CGFloat kUITextViewVerticalPadding = 6;
 }
 
 - (CGFloat)heightThatFits:(BOOL*)overflowed numberOfLines:(NSInteger*)numberOfLines {
+    
   CGFloat ttLineHeight = self.font.ttLineHeight;
   CGFloat minHeight = _minNumberOfLines * ttLineHeight;
   CGFloat maxHeight = _maxNumberOfLines * ttLineHeight;
@@ -333,6 +335,7 @@ static const CGFloat kUITextViewVerticalPadding = 6;
 }
 
 - (void)constrainToText {
+    
   NSInteger numberOfLines = 0;
   CGFloat oldHeight = self.height;
   CGFloat newHeight = [self heightThatFits:&_overflowed numberOfLines:&numberOfLines];
@@ -361,12 +364,16 @@ static const CGFloat kUITextViewVerticalPadding = 6;
   if (oldHeight && diff) {
     if ([_delegate respondsToSelector:@selector(textEditor:shouldResizeBy:)]) {
       if (![_delegate textEditor:self shouldResizeBy:diff]) {
+          
+        
+          
         return;
       }
     }
     
     self.frame = TTRectContract(self.frame, 0, -diff);
   }
+
 }
 
 - (void)didBeginEditing {

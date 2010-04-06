@@ -23,13 +23,16 @@
   id<TTTextEditorDelegate> _delegate;
   TTTextEditorInternal* _internal;
   UITextField* _textField;
-  TTTextView* _textView;
   NSInteger _minNumberOfLines;
   NSInteger _maxNumberOfLines;
   BOOL _editing;
   BOOL _overflowed;
   BOOL _autoresizesToText;
   BOOL _showsExtraLine;
+
+    @public
+    TTTextView* _textView;
+
 }
 
 @property(nonatomic,assign) id<TTTextEditorDelegate> delegate;
