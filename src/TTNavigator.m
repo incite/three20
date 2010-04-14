@@ -16,6 +16,8 @@
 
 #import "Three20/TTNavigator.h"
 
+#import "Three20/TTNavigatorWindow.h"
+
 #import "Three20/TTGlobalUI.h"
 #import "Three20/TTGlobalUINavigator.h"
 #import "Three20/TTDebugFlags.h"
@@ -35,30 +37,6 @@ UIViewController* TTOpenURL(NSString* URL) {
     [[TTURLAction actionWithURLPath:URL]
                       applyAnimated:YES]];
 }
-
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////
-@interface TTNavigatorWindow : UIWindow
-@end
-
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////////////////////////
-@implementation TTNavigatorWindow
-
-
-///////////////////////////////////////////////////////////////////////////////////////////////////
-- (void)motionBegan:(UIEventSubtype)motion withEvent:(UIEvent *)event {
-  if (event.type == UIEventSubtypeMotionShake && [TTNavigator navigator].supportsShakeToReload) {
-    [[TTNavigator navigator] reload];
-  }
-}
-
-
-@end
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -555,7 +533,10 @@ UIViewController* TTOpenURL(NSString* URL) {
 - (UIViewController*)topViewController {
   UIViewController* controller = _rootViewController;
   while (controller) {
-    UIViewController* child = controller.modalViewController;
+    UIViewController* child = controller.popupViewController;
+    if (!child || ![child canBeTopViewController]) {
+      child = controller.modalViewController;
+    }
     if (!child) {
       child = controller.topSubcontroller;
     }
