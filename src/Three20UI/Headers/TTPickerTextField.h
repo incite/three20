@@ -43,4 +43,6 @@
 
 - (void)scrollToEditingLine:(BOOL)animated;
 
+- (CGFloat)heightWithLines:(int)lines;
+
 @end
