@@ -13,3 +13,11 @@ src/Three20Style/*.h
 src/Three20UICommon/*.h
 src/Three20UINavigator/*.h
 src/Three20UI/*.h
+
+src/Three20/Three20.xcodeproj/xcuserdata/
+src/Three20Core/Three20Core.xcodeproj/xcuserdata/
+src/Three20Network/Three20Network.xcodeproj/xcuserdata/
+src/Three20Style/Three20Style.xcodeproj/xcuserdata/
+src/Three20UI/Three20UI.xcodeproj/xcuserdata/
+src/Three20UICommon/Three20UICommon.xcodeproj/xcuserdata/
+src/Three20UINavigator/Three20UINavigator.xcodeproj/xcuserdata/
