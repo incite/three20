@@ -150,7 +150,7 @@
   }
 
   if (URL.query) {
-    NSDictionary* query = [URL.query queryDictionaryUsingEncoding:NSUTF8StringEncoding];
+    NSDictionary* query = [URL.query queryContentsUsingEncoding:NSUTF8StringEncoding];
     for (NSString* name in [query keyEnumerator]) {
       NSString* value = [query objectForKey:name];
       [self parseParameter:name value:value];

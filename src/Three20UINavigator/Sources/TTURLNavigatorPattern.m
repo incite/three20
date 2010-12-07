@@ -297,7 +297,7 @@ static NSString* kUniversalURLPattern = @"*";
     }
   }
 
-  NSDictionary* URLQuery = [URL.query queryDictionaryUsingEncoding:NSUTF8StringEncoding];
+  NSDictionary* URLQuery = [URL.query queryContentsUsingEncoding:NSUTF8StringEncoding];
   if (URLQuery.count) {
     for (NSString* name in [URLQuery keyEnumerator]) {
       id<TTURLPatternText> patternText = [_query objectForKey:name];
